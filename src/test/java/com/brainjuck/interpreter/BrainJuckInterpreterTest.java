@@ -22,7 +22,11 @@
 
 package com.brainjuck.interpreter;
 
+import static org.junit.Assert.assertEquals;
+
 import com.brainjuck.error.BrainJuckException;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.Test;
 
 /**
@@ -40,5 +44,27 @@ public class BrainJuckInterpreterTest {
   public void validateFileExtentionError() throws BrainJuckException {
     String args = "+[-->-[>>+>-----<<<--<---]>-..+++[.>]";
     BrainJuckInterpreter.validateLoops(args);
-  } 
+  }
+ 
+  /**
+   * Test for {@link BrainJuckInterpreter#interpreter(String)}.
+   *
+   * @throws BrainJuckException if loop statement is invalid
+   */
+  @Test
+  public void testPrintPyramid() throws BrainJuckException {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(outputStream);
+    System.setOut(printStream);
+
+    String code = "+[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+.";
+
+    BrainJuckInterpreter.validateLoops(code);
+    BrainJuckInterpreter.interpreter(code);
+
+    String printedOutput = outputStream.toString();
+    String expectedOutput = "Hello, World!";
+
+    assertEquals(expectedOutput, printedOutput);
+  }
 }
