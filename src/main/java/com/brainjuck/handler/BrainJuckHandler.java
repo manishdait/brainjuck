@@ -22,13 +22,11 @@
 
 package com.brainjuck.handler;
 
+import com.brainjuck.error.BrainJuckException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
 import org.apache.commons.io.FilenameUtils;
-
-import com.brainjuck.error.BrainJuckException;
 
 /**
  * The {@link BrainJuckHandler} handles the input file.
@@ -36,26 +34,34 @@ import com.brainjuck.error.BrainJuckException;
  */
 
 public class BrainJuckHandler {
-    public static String readFile(String path) throws BrainJuckException {
-        StringBuilder code = new StringBuilder();
-        String extension = FilenameUtils.getExtension(path);
-        if (!(extension.equals("bf") || extension.equals("b"))) {
-            throw new BrainJuckException(BrainJuckException.Exception.InvalidFileExtension, "Instead .bf or .b file extension ." + extension + " is used.");
-        }
-
-        File file = new File(path);
-        
-        try {
-            Scanner reader = new Scanner(file);
-            while (reader.hasNextLine()) {
-                code.append(reader.nextLine());
-            }
-            reader.close();
-        } 
-        catch (FileNotFoundException e) {
-            throw new BrainJuckException(BrainJuckException.Exception.FileNotFound, "File with path:(" + path + ") not found.");
-        }
-
-        return code.toString();
+  /**
+   * Read Brainfuck code from file.
+   *
+   * @param path File path
+   * @return code
+   * @throws BrainJuckException if path is invalid
+   */
+  public static String readFile(String path) throws BrainJuckException {
+    StringBuilder code = new StringBuilder();
+    String extension = FilenameUtils.getExtension(path);
+    if (!(extension.equals("bf") || extension.equals("b"))) {
+      throw new BrainJuckException(BrainJuckException.Exception.InvalidFileExtension,
+       "Instead .bf or .b file extension ." + extension + " is used.");
     }
+
+    File file = new File(path);
+        
+    try {
+      Scanner reader = new Scanner(file);
+      while (reader.hasNextLine()) {
+        code.append(reader.nextLine());
+      }
+      reader.close();
+    } catch (FileNotFoundException e) {
+      throw new BrainJuckException(BrainJuckException.Exception.FileNotFound, 
+      "File with path:(" + path + ") not found.");
+    }
+
+    return code.toString();
+  }
 }

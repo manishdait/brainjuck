@@ -34,19 +34,22 @@ import com.brainjuck.interpreter.BrainJuckInterpreter;
  */
 
 public class BrainJuckRunner {
-    public static void main( String[] args ) throws BrainJuckException {
-        System.out.println("\n[****  Brainjuck  ****]\n");
+  /**
+   * Runs the BrainJuckRunnerClass.
+   *
+   * @param args path of brainfuck file
+   * @throws BrainJuckException if file path is invalid
+   */
+  public static void main(String[] args) throws BrainJuckException {
+    System.out.println("\n[****  Brainjuck  ****]\n");
 
-        if(args.length == 0){
-            System.out.println("...Specify a file path to interprete the code.");
-        }
-
-        else{
-            String code = BrainJuckHandler.readFile(args[0]);
-            new BrainJuckInterpreter(code);
-        }
-
-
-        System.out.println("\n");
+    if (args.length == 0) {
+      System.out.println("...Specify a file path to interprete the code.");
+    } else {
+      String code = BrainJuckHandler.readFile(args[0]);
+      new BrainJuckInterpreter(code);
     }
+    
+    System.out.println("\n");
+  }
 }

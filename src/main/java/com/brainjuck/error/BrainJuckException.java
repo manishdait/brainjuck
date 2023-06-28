@@ -29,7 +29,10 @@ package com.brainjuck.error;
 
 public class BrainJuckException extends Exception {
 
-  public enum Exception{
+  /**
+   * Type of Exceptions.
+   */
+  public enum Exception {
     FileNotFound,
     InvalidFileExtension,
     LoopMissMatch
@@ -39,17 +42,17 @@ public class BrainJuckException extends Exception {
 
   public BrainJuckException() {}
   
-  public BrainJuckException(Exception exception,String message) {
+  public BrainJuckException(Exception exception, String message) {
     super(message);
     this.exception = exception;
   }
 
-  public Exception getException(){
+  public Exception getException() {
     return this.exception;
   }
 
   @Override
   public String toString() {
-      return "BrainJuck" + exception + ": [" + getMessage() + "]";
+    return "BrainJuck" + exception + ": [" + getMessage() + "]";
   }
 }

@@ -42,9 +42,14 @@ public class BrainJuckInterpreter {
     interpreter(code);
   }
 
+  /**
+   * Interprete the Brainfuck code.
+   *
+   * @param code stream of code readed from file
+   */
   public static void interpreter(String code) {
-    for (int instruction_pointer = 0; instruction_pointer < code.length(); instruction_pointer++) {
-      switch (code.charAt(instruction_pointer)) {
+    for (int instructionPointer = 0; instructionPointer < code.length(); instructionPointer++) {
+      switch (code.charAt(instructionPointer)) {
         case '>':
           if (location_pointer >= memory.length - 1) {
             location_pointer = 0;
@@ -81,7 +86,7 @@ public class BrainJuckInterpreter {
 
         case '[':
           if (memory[location_pointer] == 0) {
-            instruction_pointer = loop_tracker[instruction_pointer];
+            instructionPointer = loop_tracker[instructionPointer];
             break;
           }
           break;
@@ -90,7 +95,7 @@ public class BrainJuckInterpreter {
           if (memory[location_pointer] == 0) {
             break;
           }
-          instruction_pointer = loop_tracker[instruction_pointer];
+          instructionPointer = loop_tracker[instructionPointer];
           break;
 
         default:
@@ -123,7 +128,8 @@ public class BrainJuckInterpreter {
     }
 
     if (!stack.isEmpty()) {
-      throw new BrainJuckException(BrainJuckException.Exception.LoopMissMatch ,"Syntax error '[' or ']' opening or closing of loop is missing.");
+      throw new BrainJuckException(BrainJuckException.Exception.LoopMissMatch,
+      "Syntax error '[' or ']' opening or closing of loop is missing.");
     }
   }
      
