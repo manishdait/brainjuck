@@ -22,20 +22,9 @@
 
 package com.brainjuck;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 /**
- * The {@link BrainJuckRunnerTest} is a class for testing {@link BrainJuckRunner}.
+ * Test for BrainJuck.
  *
  */
 
-public class BrainJuckRunnerTest 
-{
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-}
+public class BrainJuckRunnerTest {}

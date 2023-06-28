@@ -22,19 +22,23 @@
 
 package com.brainjuck.interpreter;
 
+import com.brainjuck.error.BrainJuckException;
 import org.junit.Test;
 
-import com.brainjuck.error.BrainJuckException;
-
 /**
- * The {@link BrainJuckInterpreterTest} is a class for testing {@link BrainJuckInterpreter}.
- *
+ * Test for Brainjuck.
+ * 
  */
 
 public class BrainJuckInterpreterTest {
-    @Test(expected = BrainJuckException.class)
-    public void validateFileExtentionError() throws BrainJuckException {
-        String args = "+[-->-[>>+>-----<<<--<---]>-..+++[.>]";
-        BrainJuckInterpreter.validateLoops(args);
-    } 
+  /**
+   * Test for {@link BrainJuckInterpreter#validateLoops(String)}.
+   *
+   * @throws BrainJuckException if loop statement is invalid
+   */
+  @Test(expected = BrainJuckException.class)
+  public void validateFileExtentionError() throws BrainJuckException {
+    String args = "+[-->-[>>+>-----<<<--<---]>-..+++[.>]";
+    BrainJuckInterpreter.validateLoops(args);
+  } 
 }

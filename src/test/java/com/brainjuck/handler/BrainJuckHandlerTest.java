@@ -24,32 +24,46 @@ package com.brainjuck.handler;
 
 import static org.junit.Assert.assertEquals;
 
+import com.brainjuck.error.BrainJuckException;
 import org.junit.Test;
 
-import com.brainjuck.error.BrainJuckException;
-
 /**
- * The {@link BrainJuckHandlerTest} is a class for testing {@link BrainJuckHandler}.
+ * Test for BrainJuck.
  *
  */
 
 public class BrainJuckHandlerTest {
-    @Test(expected = BrainJuckException.class)
-    public void testFileExtentionError() throws BrainJuckException {
-        String args = "src/test/resources/handler/Somecode.txt";
-        BrainJuckHandler.readFile(args);
-    }     
+  /**
+   * Test for {@link BrainJuckHandler#readFile(String)}.
+   *
+   * @throws BrainJuckException if extention not end with bf or b
+   */
+  @Test(expected = BrainJuckException.class)
+  public void testFileExtentionError() throws BrainJuckException {
+    String args = "src/test/resources/handler/Somecode.txt";
+    BrainJuckHandler.readFile(args);
+  }     
 
-    @Test(expected = BrainJuckException.class)
-    public void testFileNotFoundError() throws BrainJuckException {
-        String args = "src/test/resources/handler/Newcode.bf";
-        BrainJuckHandler.readFile(args);
-    }     
+  /**
+   * Test for {@link BrainJuckHandler#readFile(String)}.
+   *
+   * @throws BrainJuckException file does not exist
+   */
+  @Test(expected = BrainJuckException.class)
+  public void testFileNotFoundError() throws BrainJuckException {
+    String args = "src/test/resources/handler/Newcode.bf";
+    BrainJuckHandler.readFile(args);
+  }     
 
-    @Test
-    public void validateOutout() throws BrainJuckException{
-        String expected = "+[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+.";
-        String actual = BrainJuckHandler.readFile("src/test/resources/handler/Somecode.bf");
-        assertEquals(expected,actual);
-    }
+  /**
+   * Test for {@link BrainJuckHandler#readFile(String)}.
+   *
+   * @throws BrainJuckException if any error occurs
+   */
+  @Test
+  public void validateOutout() throws BrainJuckException {
+    String expected = "+[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+.";
+    String actual = BrainJuckHandler.readFile("src/test/resources/handler/Somecode.bf");
+    assertEquals(expected, actual);
+  }
 }
