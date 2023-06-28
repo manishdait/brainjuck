@@ -22,9 +22,38 @@
 
 package com.brainjuck;
 
+import static org.junit.Assert.assertEquals;
+
+import com.brainjuck.error.BrainJuckException;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.Test;
+
+
 /**
  * Test for BrainJuck.
  *
  */
 
-public class BrainJuckRunnerTest {}
+public class BrainJuckRunnerTest {
+  /**
+   * Test for {@link BrainJuckRunner#main(String[])}.
+   *
+   * @throws BrainJuckException if BrainJuckHandler causes error
+   */
+  @Test
+  public void testBrainJuckRunner() throws BrainJuckException {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(outputStream);
+    System.setOut(printStream);
+
+    String[] args =  {"src/test/resources/handler/Somecode.bf"};
+    BrainJuckRunner.main(args);
+
+    String printedOutput = outputStream.toString();
+    String expectedOutput = "\n[****  Brainjuck  ****]\n\nHello, World!\n\n";
+
+    assertEquals(expectedOutput, printedOutput);
+    
+  }
+}
