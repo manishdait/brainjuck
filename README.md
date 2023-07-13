@@ -32,9 +32,16 @@ Navigate to the `brainjuck` directory and run the following command to build the
 mvn clean compile assembly:single
 ```
 
-### Usage
+3. Alternatively, if you have the .deb file:
 
-To run the BrainJuck Interpreter, you can use the following command:
+If you have the `.deb` file for the BrainJuck Interpreter, you can install it directly using the package manager of your Linux distribution. For example, if you're using `apt`:
+
+```
+sudo apt install /path/to/brainjuck.deb
+```
+
+### Usage
+1. To run the BrainJuck Interpreter with .jar, you can use the following command:
 
 ```
 java -jar target/brainjuck-jar-with-dependencies.jar <filename>
@@ -47,6 +54,22 @@ For example, to run a program stored in `example.bf`, you would run the followin
 ```
 java -jar target/brainjuck-jar-with-dependencies.jar example.bf
 ```
+
+2. To run the BrainJuck Interpreter with .deb, you can use the following command:
+```
+brainjuck <filename>
+```
+where `<filename>` is the path to the Brainfuck code file you want to execute.
+
+For example, to run a program stored in `example.bf`, you would run the following command:
+```
+brainjuck example.bf
+```
+
+
+
+
+
 ## Features
 
 `Brainjuck Interpreter` provides the following features:
