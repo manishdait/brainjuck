@@ -32,9 +32,9 @@ Navigate to the `brainjuck` directory and run the following command to build the
 mvn clean compile assembly:single
 ```
 
-3. Alternatively, if you have the .deb file:
+3. Alternatively, you can user .deb file in `release` folder:
 
-If you have the `.deb` file for the BrainJuck Interpreter, you can install it directly using the package manager of your Linux distribution. For example, if you're using `apt`:
+You can install it directly using the package manager of your Linux distribution. For example, if you're using `apt`:
 
 ```
 sudo apt install /path/to/brainjuck.deb
